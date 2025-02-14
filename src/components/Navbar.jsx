@@ -19,7 +19,7 @@ function Header() {
       <Container>
         <Navbar.Brand href="#home">
           <img src={logo} width="50" height="50" alt="logo" />
-          To Do App
+          LexMeet
         </Navbar.Brand>
         <Navbar.Text className="ml-auto">
           {dateTime.toLocaleString()}
