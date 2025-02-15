@@ -218,28 +218,28 @@ function App() {
             <h3>Pending</h3>
             <div className="d-flex justify-content-start mb-3">
               <Button
-                variant="outline-primary"
+                variant="outline-secondary"
                 onClick={() => setPriorityFilter("")}
                 className="me-2"
               >
                 All
               </Button>
               <Button
-                variant="outline-primary"
+                variant="outline-danger"
                 onClick={() => setPriorityFilter("High")}
                 className="me-2"
               >
                 High
               </Button>
               <Button
-                variant="outline-primary"
+                variant="outline-warning"
                 onClick={() => setPriorityFilter("Medium")}
                 className="me-2"
               >
                 Medium
               </Button>
               <Button
-                variant="outline-primary"
+                variant="outline-success"
                 onClick={() => setPriorityFilter("Low")}
               >
                 Low
