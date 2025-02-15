@@ -128,87 +128,7 @@ function App() {
       <Header />
 
       <Row>
-        <Col md={6}>
-          <div className="percentage-container">
-            <h3>Progress</h3>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                fontFamily: "Roboto Slab",
-              }}
-            >
-              <div style={{ width: 120, height: 120 }}>
-                <CircularProgressbar
-                  value={pendingProgress}
-                  text={`Pending: ${pendingProgress.toFixed(0)}%`}
-                  styles={buildStyles({
-                    textSize: "9px",
-                    pathColor: `rgba(255, 193, 7, ${pendingProgress / 100})`,
-                    textColor: "#000",
-                  })}
-                />
-              </div>
-              <div style={{ width: 120, height: 120, fontFamily: "Roboto Slab" }}>
-                <CircularProgressbar
-                  value={completedProgress}
-                  text={`Completed: ${completedProgress.toFixed(0)}%`}
-                  styles={buildStyles({
-                    textSize: "9px",
-                    pathColor: `rgba(40, 167, 69, ${completedProgress / 100})`,
-                    textColor: "#000",
-                  })}
-                />
-              </div>
-            </div>
-
-            <h3 style={{ marginTop: "1rem" }}>Completed</h3>
-            {tasks.filter((task) => task.completed).length === 0 ? (
-              <p>No completed tasks yet.</p>
-            ) : (
-              <ListGroup>
-                {tasks
-                  .filter((task) => task.completed)
-                  .map((task, index) => {
-                    const originalIndex = tasks.findIndex((t) => t === task);
-                    return (
-                      <ListGroup.Item key={originalIndex}>
-                        <Row>
-                          <Col>
-                            <span
-                              style={{
-                                textDecoration: task.completed
-                                  ? "line-through"
-                                  : "none",
-                              }}
-                            >
-                              <strong> {task.task} </strong>- Due:{" "}
-                              {task.dueDate
-                                ? new Date(task.dueDate).toLocaleDateString()
-                                : "No Due Date"}
-                            </span>
-                          </Col>
-                          <Col className="d-flex justify-content-end">
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              onClick={() =>
-                                handleShowDeleteModal(originalIndex)
-                              }
-                              style={{ marginLeft: 10 }}
-                            >
-                              Delete
-                            </Button>
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                    );
-                  })}
-              </ListGroup>
-            )}
-          </div>
-        </Col>
-        <Col md={6}>
+        <Col md={6} sm={{ order: 2 }}>
           <div className="task-container">
             <h3>Task</h3>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -386,6 +306,86 @@ function App() {
                     </ListGroup.Item>
                   );
                 })}
+              </ListGroup>
+            )}
+          </div>
+        </Col>
+
+        <Col md={6} sm={{ order: 1 }}>
+          <div className="percentage-container">
+            <h3>Progress</h3>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              <div style={{ width: 120, height: 120 }}>
+                <CircularProgressbar
+                  value={pendingProgress}
+                  text={`Pending: ${pendingProgress.toFixed(0)}%`}
+                  styles={buildStyles({
+                    textSize: "9px",
+                    pathColor: `rgba(255, 193, 7, ${pendingProgress / 100})`,
+                    textColor: "#000",
+                  })}
+                />
+              </div>
+              <div style={{ width: 120, height: 120 }}>
+                <CircularProgressbar
+                  value={completedProgress}
+                  text={`Completed: ${completedProgress.toFixed(0)}%`}
+                  styles={buildStyles({
+                    textSize: "9px",
+                    pathColor: `rgba(40, 167, 69, ${completedProgress / 100})`,
+                    textColor: "#000",
+                  })}
+                />
+              </div>
+            </div>
+
+            <h3 style={{ marginTop: "1rem" }}>Completed</h3>
+            {tasks.filter((task) => task.completed).length === 0 ? (
+              <p>No completed tasks yet.</p>
+            ) : (
+              <ListGroup>
+                {tasks
+                  .filter((task) => task.completed)
+                  .map((task, index) => {
+                    const originalIndex = tasks.findIndex((t) => t === task);
+                    return (
+                      <ListGroup.Item key={originalIndex}>
+                        <Row>
+                          <Col>
+                            <span
+                              style={{
+                                textDecoration: task.completed
+                                  ? "line-through"
+                                  : "none",
+                              }}
+                            >
+                              <strong> {task.task} </strong>- Due:{" "}
+                              {task.dueDate
+                                ? new Date(task.dueDate).toLocaleDateString()
+                                : "No Due Date"}
+                            </span>
+                          </Col>
+                          <Col className="d-flex justify-content-end">
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() =>
+                                handleShowDeleteModal(originalIndex)
+                              }
+                              style={{ marginLeft: 10 }}
+                            >
+                              Delete
+                            </Button>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    );
+                  })}
               </ListGroup>
             )}
           </div>

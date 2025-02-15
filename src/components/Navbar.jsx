@@ -17,7 +17,7 @@ function Header() {
   return (
     <Navbar className="nav" data-bs-theme="light">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand style={{ color: "#5E1B89" }}>
           <img src={logo} width="50" height="50" alt="logo" />
           LexMeet
         </Navbar.Brand>

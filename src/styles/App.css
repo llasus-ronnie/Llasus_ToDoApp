@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap");
 html,
 body {
   margin: 0;
@@ -7,19 +7,14 @@ body {
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
   color-scheme: light dark;
-  background: linear-gradient(to right, #F4512C, #5E1B89);
+  background: linear-gradient(to right, #f4512c, #5e1b89);
 }
 
 .nav {
   font-family: "DM Sans", sans-serif;
-  background-color: rgba(245, 245, 245, 10);
-}
-
-.navbar-text {
-  margin-left: auto;
-  font-size: 16px;
   font-weight: bold;
-  font-family: "DM Sans", sans-serif;
+  background-color: white;
+  color: #5e1b89;
 }
 
 .task-container,
@@ -33,11 +28,12 @@ body {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 2rem;
+  font-family: "Lato", sans-serif;
 }
 
 .task-container,
 .percentage-container {
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 
 .list-container,
@@ -53,4 +49,11 @@ body {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 2rem;
+}
+
+.completed-container h3,
+.list-container h3,
+.task-container h3,
+.percentage-container h3 {
+  font-family: "Roboto Slab", serif;
 }
