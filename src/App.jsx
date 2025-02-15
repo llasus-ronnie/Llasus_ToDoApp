@@ -182,7 +182,7 @@ function App() {
                                   : "none",
                               }}
                             >
-                              {task.task} - Due:{" "}
+                              <strong> {task.task} </strong>- Due:{" "}
                               {task.dueDate
                                 ? new Date(task.dueDate).toLocaleDateString()
                                 : "No Due Date"}
