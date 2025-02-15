@@ -135,7 +135,7 @@ function App() {
               style={{
                 display: "flex",
                 justifyContent: "space-around",
-                fontFamily: "Poppins",
+                fontFamily: "Roboto Slab",
               }}
             >
               <div style={{ width: 120, height: 120 }}>
@@ -149,7 +149,7 @@ function App() {
                   })}
                 />
               </div>
-              <div style={{ width: 120, height: 120, fontFamily: "Poppins" }}>
+              <div style={{ width: 120, height: 120, fontFamily: "Roboto Slab" }}>
                 <CircularProgressbar
                   value={completedProgress}
                   text={`Completed: ${completedProgress.toFixed(0)}%`}
