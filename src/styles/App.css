@@ -8,6 +8,7 @@ body {
   font-family: "Lato", sans-serif;
   color-scheme: light dark;
   background: linear-gradient(to right, #f4512c, #5e1b89);
+  margin-bottom: 2rem;
 }
 
 .nav {
