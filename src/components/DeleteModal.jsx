@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 
 function DeleteModal({ show, handleClose, handleDelete }) {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal centered show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Delete Task</Modal.Title>
       </Modal.Header>
