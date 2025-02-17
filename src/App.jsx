@@ -122,6 +122,7 @@ function App() {
         (task) => !task.completed && task.priority === priorityFilter
       )
     : tasks.filter((task) => !task.completed);
+  filteredTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
   return (
     <>
@@ -175,11 +176,7 @@ function App() {
                       rows={1}
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
-                      required
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please enter some notes.
-                    </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
 
@@ -218,28 +215,36 @@ function App() {
             <h3>Pending</h3>
             <div className="d-flex justify-content-start mb-3">
               <Button
-                variant="outline-secondary"
+                variant={
+                  priorityFilter === "" ? "secondary" : "outline-secondary"
+                }
                 onClick={() => setPriorityFilter("")}
                 className="me-2"
               >
                 All
               </Button>
               <Button
-                variant="outline-danger"
+                variant={
+                  priorityFilter === "High" ? "danger" : "outline-danger"
+                }
                 onClick={() => setPriorityFilter("High")}
                 className="me-2"
               >
                 High
               </Button>
               <Button
-                variant="outline-warning"
+                variant={
+                  priorityFilter === "Medium" ? "warning" : "outline-warning"
+                }
                 onClick={() => setPriorityFilter("Medium")}
                 className="me-2"
               >
                 Medium
               </Button>
               <Button
-                variant="outline-success"
+                variant={
+                  priorityFilter === "Low" ? "success" : "outline-success"
+                }
                 onClick={() => setPriorityFilter("Low")}
               >
                 Low
