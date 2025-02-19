@@ -4,11 +4,11 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
   color-scheme: light dark;
-  background: linear-gradient(to right, #f4512c, #5e1b89);
-  margin-bottom: 2rem;
+  background: linear-gradient(to top, #f4512c, #5e1b89);
 }
 
 .nav {

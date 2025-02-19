@@ -109,6 +109,18 @@ function App() {
     setTaskToDelete(null);
   };
 
+  const handleCompleteAll = () => {
+    const updatedTasks = tasks.map((task) => ({
+      ...task,
+      completed: true,
+    }));
+    setTasks(updatedTasks);
+  };
+
+  const handleDeleteAll = () => {
+    setTasks([]);
+  };
+
   const completedTasks = tasks.filter((task) => task.completed).length;
   const pendingTasks = tasks.filter((task) => !task.completed).length;
   const totalTasks = tasks.length;
@@ -129,7 +141,7 @@ function App() {
       <Header />
 
       <Row>
-        <Col md={6} sm={{ order: 2 }}>
+        <Col md={6}>
           <div className="task-container">
             <h3>Task</h3>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -213,42 +225,56 @@ function App() {
             </Form>
 
             <h3>Pending</h3>
-            <div className="d-flex justify-content-start mb-3">
-              <Button
-                variant={
-                  priorityFilter === "" ? "secondary" : "outline-secondary"
-                }
-                onClick={() => setPriorityFilter("")}
-                className="me-2"
-              >
-                All
-              </Button>
-              <Button
-                variant={
-                  priorityFilter === "High" ? "danger" : "outline-danger"
-                }
-                onClick={() => setPriorityFilter("High")}
-                className="me-2"
-              >
-                High
-              </Button>
-              <Button
-                variant={
-                  priorityFilter === "Medium" ? "warning" : "outline-warning"
-                }
-                onClick={() => setPriorityFilter("Medium")}
-                className="me-2"
-              >
-                Medium
-              </Button>
-              <Button
-                variant={
-                  priorityFilter === "Low" ? "success" : "outline-success"
-                }
-                onClick={() => setPriorityFilter("Low")}
-              >
-                Low
-              </Button>
+            <div className="d-flex justify-content-between mb-3">
+              <div>
+                <Button
+                  variant={
+                    priorityFilter === "" ? "secondary" : "outline-secondary"
+                  }
+                  onClick={() => setPriorityFilter("")}
+                  className="me-2"
+                >
+                  All
+                </Button>
+                <Button
+                  variant={
+                    priorityFilter === "High" ? "danger" : "outline-danger"
+                  }
+                  onClick={() => setPriorityFilter("High")}
+                  className="me-2"
+                >
+                  High
+                </Button>
+                <Button
+                  variant={
+                    priorityFilter === "Medium" ? "warning" : "outline-warning"
+                  }
+                  onClick={() => setPriorityFilter("Medium")}
+                  className="me-2"
+                >
+                  Medium
+                </Button>
+                <Button
+                  variant={
+                    priorityFilter === "Low" ? "success" : "outline-success"
+                  }
+                  onClick={() => setPriorityFilter("Low")}
+                >
+                  Low
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="success"
+                  onClick={() => handleCompleteAll()}
+                  className="me-2"
+                >
+                  Complete All
+                </Button>
+                <Button variant="danger" onClick={() => handleDeleteAll()}>
+                  Delete All
+                </Button>
+              </div>
             </div>
             {filteredTasks.length === 0 ? (
               <p>No pending task.</p>
@@ -316,13 +342,14 @@ function App() {
           </div>
         </Col>
 
-        <Col md={6} sm={{ order: 1 }}>
+        <Col md={6} style={{ marginBottom: "2rem" }}>
           <div className="percentage-container">
             <h3>Progress</h3>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-around",
+                alignItems: "center",
               }}
             >
               <div style={{ width: 120, height: 120 }}>
@@ -335,6 +362,9 @@ function App() {
                     textColor: "#000",
                   })}
                 />
+                <div style={{ textAlign: "center", marginTop: "10px" }}>
+                  <strong>{pendingTasks}</strong> Pending
+                </div>
               </div>
               <div style={{ width: 120, height: 120 }}>
                 <CircularProgressbar
@@ -346,10 +376,13 @@ function App() {
                     textColor: "#000",
                   })}
                 />
+                <div style={{ textAlign: "center", marginTop: "10px" }}>
+                  <strong>{completedTasks}</strong> Completed
+                </div>
               </div>
             </div>
 
-            <h3 style={{ marginTop: "1rem" }}>Completed</h3>
+            <h3 style={{ marginTop: "3.7rem" }}>Completed</h3>
             {tasks.filter((task) => task.completed).length === 0 ? (
               <p>No completed tasks yet.</p>
             ) : (
